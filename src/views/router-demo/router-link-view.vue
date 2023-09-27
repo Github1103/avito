@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
-import {useRouter} from "vue-router";
+import {ref} from "vue";
 
-const router = useRouter()
 const routerLinks = ref([
   {
     path: '/home',
@@ -13,14 +11,10 @@ const routerLinks = ref([
     name: 'About'
   }
 ])
-
-onMounted(() => {
-  router.push('/home')
-});
 </script>
 
 <template>
-  <h1>Welcome to Vue-Router</h1>
+  <h1 class="title">Welcome to Vue-Router</h1>
   <p>
     <router-link v-for="link in routerLinks"
                  :key="link.name"
@@ -34,8 +28,14 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+.title {
+  background: linear-gradient(to right,red, blue, green, white);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
 .window {
-  width: 80vw;
+  width: 100%;
   height: 620px;
   border: 1px solid #ffffff;
   border-radius: 10px;
@@ -50,6 +50,14 @@ p {
   justify-content: center;
   font-size: 32px;
   font-weight: bold;
-  color: #42b983;
+  > a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  > a:hover {
+    color: transparent;
+    -webkit-text-stroke: 1px #ffffff;
+  }
 }
 </style>
