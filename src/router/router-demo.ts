@@ -9,5 +9,8 @@ export default [
     },
     {
         path: '/dynamic/:userId', component: () => import('@views/router-demo/dynamic-router/dynamic-route.vue')
+    },
+    {
+        path: '/regex-match', component: () => import('@views/router-demo/regex-match-router/regex-match.vue')
     }
 ]

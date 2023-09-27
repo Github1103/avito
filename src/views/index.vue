@@ -22,6 +22,7 @@ const generateDynamicUserId = () => {
 const routerCatalog = ref([
   {name: "Router Link & View", path: "/rd/home"},
   {name: "Router Dynamic Route", path: "/dynamic/"},
+  {name: "Router Regex Match", path: "/regex-match/"},
 ])
 
 const sectionList = computed(() => [
