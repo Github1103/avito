@@ -1,34 +1,46 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 
-const helloCatalog = [
+onMounted(() => {
+  generateDynamicUserId()
+  setInterval(() => {
+    generateDynamicUserId()
+  }, 5000)
+})
+
+const helloCatalog = ref([
   {name: "Hello Vite+Vue3", path: "/hello-world"},
-]
+])
 
-const routerCatalog = [
-  {name: "Router Link & View", path: "/home"},
-]
+const generateDynamicUserId = () => {
+  const dynamicUserId = Math.floor(Math.random() * 100).toString()
+  routerCatalog.value.splice(1, 1,{
+    name: `Dynamic Route: UserId = "${dynamicUserId}"`,
+    path: `/dynamic/${dynamicUserId}`
+  })
+}
+const routerCatalog = ref([
+  {name: "Router Link & View", path: "/rd/home"},
+  {name: "Router Dynamic Route", path: "/dynamic/"},
+])
 
-const sectionList = ref([
+const sectionList = computed(() => [
   {
-    name: "Hello Vite+Vue3", catalog: helloCatalog
+    name: "Hello Vite+Vue3", catalog: helloCatalog.value
   },
   {
-    name: "Router", catalog: routerCatalog
+    name: "Router", catalog: routerCatalog.value
   },
 ])
 </script>
 
 <template>
   <h1>Guide</h1>
-  <template v-for="section of sectionList"
-    :key="section.name"
-  >
+  <template v-for="section of sectionList">
     <h2>{{ section.name }}</h2>
     <section class="board">
       <router-link
         v-for="route of section.catalog"
-        :key="route.path"
         :to="route.path"
         class="card"
       >

@@ -3,11 +3,11 @@ import {ref} from "vue";
 
 const routerLinks = ref([
   {
-    path: '/home',
+    path: '/rd/home',
     name: 'Home'
   },
   {
-    path: '/about',
+    path: '/rd/about',
     name: 'About'
   }
 ])

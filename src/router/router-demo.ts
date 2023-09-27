@@ -1,12 +1,13 @@
-import RouterLinkView from "@views/router-demo/router-link-view.vue";
-
 export default [
     {
         path: '/rd',
-        component: RouterLinkView,
+        component: () => import('@views/router-demo/router-link-view.vue'),
         children: [
-            {path: '/home', component: () => import('@views/router-demo/home.vue')},
-            {path: '/about', component: () => import('@views/router-demo/about.vue')},
+            {path: '/rd/home', component: () => import('@views/router-demo/home.vue')},
+            {path: '/rd/about', component: () => import('@views/router-demo/about.vue')},
         ]
+    },
+    {
+        path: '/dynamic/:userId', component: () => import('@views/router-demo/dynamic-route.vue')
     }
 ]
